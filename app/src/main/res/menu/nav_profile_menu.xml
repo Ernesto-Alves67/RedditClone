@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_item_one"
+        android:title="Perfil"/>
+    <item
+        android:id="@+id/nav_item_2"
+        android:title="Criar Comunidade"/>
+    <item
+        android:id="@+id/nav_item_colab"
+        android:title="Programa de Colaboradores"/>
+    <item
+        android:id="@+id/nav_item_3"
+        android:title="Cofre"/>
+    <item
+        android:id="@+id/nav_item_4"
+        android:title="Reddit Premium"/>
+    <item
+        android:id="@+id/nav_item_5"
+        android:title="Salvo"/>
+    <item
+        android:id="@+id/nav_item_6"
+        android:title="Histórico"/>
+
+    <item
+        android:id="@+id/nav_item_two"
+        android:title="Configurações"/>
+</menu>
