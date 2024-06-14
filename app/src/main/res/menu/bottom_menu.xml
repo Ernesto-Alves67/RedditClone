@@ -2,30 +2,35 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+
         android:id="@+id/home"
         android:icon="@drawable/home_ic"
-        android:title="Home"
-        app:showAsAction="ifRoom"/>
+        android:title="Início"
+        app:itemTextAppearanceInactive="@style/MenuTextAppearanceInactive"
+        app:itemTextAppearanceActive="@style/MenuTextAppearanceActive"/>
     <item
         android:id="@+id/community"
         android:icon="@drawable/group_svgrepo_com"
         android:title="Comunidades"
-        app:showAsAction="ifRoom"/>
+        app:itemTextAppearanceInactive="@style/MenuTextAppearanceInactive"
+        app:itemTextAppearanceActive="@style/MenuTextAppearanceActive"/>
     <item
         android:id="@+id/criar"
         android:icon="@drawable/plus_svgrepo_com"
         android:title="Criar"
-        app:showAsAction="ifRoom"/>
-
+        app:itemTextAppearanceInactive="@style/MenuTextAppearanceInactive"
+        app:itemTextAppearanceActive="@style/MenuTextAppearanceActive" />
     <item
         android:id="@+id/chat"
         android:icon="@drawable/chat_round_dots_svgrepo_com"
-        android:title="Chat"
-        app:showAsAction="ifRoom"/>
+        android:title="Chats"
+        app:itemTextAppearanceInactive="@style/MenuTextAppearanceInactive"
+        app:itemTextAppearanceActive="@style/MenuTextAppearanceActive" />
 
     <item
         android:id="@+id/notification"
         android:icon="@drawable/bell_svgrepo_com"
         android:title="Notificações"
-        app:showAsAction="ifRoom"/>
+        app:itemTextAppearanceInactive="@style/MenuTextAppearanceInactive"
+        app:itemTextAppearanceActive="@style/MenuTextAppearanceActive"/>
 </menu>

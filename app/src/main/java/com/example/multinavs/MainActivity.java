@@ -9,6 +9,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -25,6 +29,7 @@ import android.widget.Toast;
 
 import com.example.multinavs.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
 import fragments.*;
@@ -50,9 +55,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
         chev_ic = findViewById(R.id.ic_chevron);
         drawerLayout = findViewById(R.id.drawer_layout);
+
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        ImageButton menu_left = findViewById(R.id.menu_left);
         ImageButton profileButton = findViewById(R.id.profile_btn);
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,8 +71,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
         });
-
-        ImageButton menu_left = findViewById(R.id.menu_left);
         menu_left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
         });
+
         typesFeed = findViewById(R.id.typesFedd);
         title_id = findViewById(R.id.title_id);
         title_id.setOnClickListener(new View.OnClickListener() {
@@ -93,8 +99,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 Log.d("LinearL Title", "Tittulo clicado ");
             }
-
-
         });
 
 /*        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav);
@@ -102,46 +106,57 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();*/
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment selectedFragment = null;
                 int itemId = item.getItemId();
-                dynamicTitle = findViewById(R.id.dinamicTittle);
+                TextView dynamicTitle = findViewById(R.id.dinamicTittle);
 
                 String toolbarTitle = "";
-                    if(itemId ==R.id.home) {
-                        selectedFragment = new HomeFragment();
-                        toolbarTitle = "reddit";
-                        chev_ic.setVisibility(View.VISIBLE);
-                    }
-                    if(itemId ==R.id.notification) {
-                        selectedFragment = new SettingsFragment();
-                        toolbarTitle = "Notifications";
-                        chev_ic.setVisibility(View.GONE);
-                    }
-                    if(itemId == R.id.chat) {
-                        selectedFragment = new ChatFragment();
-                        toolbarTitle = "Chats";
-                        chev_ic.setVisibility(View.GONE);
+                if (itemId == R.id.home) {
+                    selectedFragment = new HomeFragment();
+                    toolbarTitle = "reddit";
+                    chev_ic.setVisibility(View.VISIBLE);
+                }
+                if (itemId == R.id.notification) {
+                    selectedFragment = new SettingsFragment();
+                    toolbarTitle = "Notifications";
+                    chev_ic.setVisibility(View.GONE);
+                }
+                if (itemId == R.id.chat) {
+                    selectedFragment = new ChatFragment();
+                    toolbarTitle = "Chats";
+                    chev_ic.setVisibility(View.GONE);
+                }
+                if (itemId == R.id.community) {
+                    selectedFragment = new CommunityFragment();
+                    toolbarTitle = "Communitys";
+                    chev_ic.setVisibility(View.GONE);
+                }
 
-                    }
-                    if(itemId == R.id.community) {
-                        selectedFragment = new CommunityFragment();
-                        toolbarTitle = "Communitys";
-                        chev_ic.setVisibility(View.GONE);
-                    }
-
-                    if (selectedFragment != null) {
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.fragment_container, selectedFragment)
-                                .commit();
-                        dynamicTitle.setText(toolbarTitle);
-                        adjustToolbarTitle();
-                    }
+                if (selectedFragment != null) {
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, selectedFragment)
+                            .commit();
+                    dynamicTitle.setText(toolbarTitle);
+                    adjustToolbarTitle();
+                }
                 return true;
             }
         });
+
+        // Defina o HomeFragment como o fragmento inicial
+        if (savedInstanceState == null) {
+            HomeFragment homeFragment = new HomeFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, homeFragment)
+                    .commit();
+            dynamicTitle = findViewById(R.id.dinamicTittle);
+            dynamicTitle.setText("reddit");
+            chev_ic.setVisibility(View.VISIBLE);
+        }
 
     }
 
@@ -227,6 +242,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     }
+
+
 /*    private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

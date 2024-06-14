@@ -32,8 +32,8 @@
 
                 <ImageButton
                     android:id="@+id/menu_left"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
                     android:src="@drawable/burger_menu_ic"
                     android:scaleType="centerCrop"
                     android:background="@color/lavender"/>
@@ -56,14 +56,15 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:text="reddit"
-                            android:textSize="22dp"
+                            android:textSize="25dp"
+                            android:textColor="@color/black"
                             android:layout_gravity="center|center"
                             android:fontFamily="@font/robotoslab_semibold"/>
                         <ImageView
                             android:id="@+id/ic_chevron"
                             android:layout_marginStart="5dp"
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
                             android:scaleType="fitCenter"
                             android:layout_gravity="center|center"
                             android:rotation="90"
@@ -71,10 +72,10 @@
                     </LinearLayout>
                     <ImageButton
                         android:id="@+id/profile_btn"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="37dp"
+                        android:layout_height="38dp"
                         android:layout_gravity="end|center_vertical"
-                        android:layout_marginEnd="16dp"
+                        android:layout_marginEnd="12dp"
                         android:src="@drawable/bamboo"
                         android:background="@drawable/rounded_shape"
                         android:scaleType="centerCrop"
@@ -93,11 +94,17 @@
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:paddingVertical="4dp"
                 android:id="@+id/bottom_navigation"
                 app:menu="@menu/bottom_menu"
-                android:background="#483D8B"
+                android:background="#ffffff"
+                app:itemTextAppearanceActive="@style/MenuTextAppearanceActive"
+                app:itemTextAppearanceInactive="@style/MenuTextAppearanceInactive"
                 app:itemIconTint="@color/lavender"
                 app:itemTextColor="@color/lavender"
+                app:itemTextAppearanceActiveBoldEnabled="true"
+                app:itemIconSize="25dp"
                 app:labelVisibilityMode="labeled"/>
         </LinearLayout>
 
@@ -162,5 +169,7 @@
         app:menu="@menu/nav_profile_menu"
         app:itemIconTint="@color/lavender"
         app:itemTextColor="@color/lavender"/>
+
+
 
 </androidx.drawerlayout.widget.DrawerLayout>

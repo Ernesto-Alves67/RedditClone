@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MenuTextAppearance">
+        <item name="android:textSize">2sp</item> <!-- Altere para o tamanho desejado -->
+        <item name="android:fontFamily">@font/robotoslab_thin</item>
+    </style>
+
+    <style name="MenuTextAppearanceActive">
+        <item name="android:textSize">10sp</item> <!-- Tamanho do texto fixo -->
+         <!-- Cor do texto ativo -->
+    </style>
+
+    <style name="MenuTextAppearanceInactive">
+        <item name="android:textSize">12sp</item> <!-- Tamanho do texto fixo --><!-- Cor do texto inativo -->
+    </style>
+
+    <style name="MenuAppearance">
+        <item name="android:textSize">12sp</item> <!-- Tamanho do texto -->
+        <item name="android:textColor">@color/black</item> <!-- Cor do texto -->
+        <item name="android:fontFamily">@font/robotoslab_medium</item> <!-- Fonte customizada -->
+    </style>
+</resources>

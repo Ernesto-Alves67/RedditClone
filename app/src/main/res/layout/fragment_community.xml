@@ -7,19 +7,10 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="16dp">
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="20dp">
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="#ffffffff"
-                android:src="@drawable/arrowleft" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -29,7 +20,7 @@
                 android:textSize="30dp"
                 android:fontFamily="@font/robotoslab_black"/>
 
-        </LinearLayout>
+
 
     </RelativeLayout>
 
