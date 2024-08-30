@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.multinavs.R;
+import com.example.redditclone.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

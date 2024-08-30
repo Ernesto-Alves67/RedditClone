@@ -1,4 +1,4 @@
-package com.example.multinavs;
+package com.example.redditclone;
 
 import android.content.Context;
 
