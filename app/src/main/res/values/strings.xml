@@ -47,4 +47,5 @@
     <string name="open_nav">Open Navigation Drawer</string>
     <string name="close_nav">Close Navigation Drawer</string>
     <string name="hello_blank_fragment">Helo</string>
+    <string name="imagem_do_perfil">Imagem do perfil</string>
 </resources>

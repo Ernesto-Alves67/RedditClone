@@ -1,13 +1,18 @@
 package adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.redditclone.R;
+import com.example.redditclone.activities.FeedDetailsActivity;
 
 import java.util.List;
 
@@ -41,11 +46,20 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView textViewTitle;
         public TextView textViewDescription;
+        public ImageView imageFeed;
 
         public ViewHolder(View itemView) {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.textViewTitle);
             textViewDescription = itemView.findViewById(R.id.textViewDescription);
+            imageFeed = itemView.findViewById(R.id.image_feed);
+
+            imageFeed.setOnClickListener(v -> {
+                Intent intent = new Intent(v.getContext(), FeedDetailsActivity.class);
+                // Inicia a nova activity
+                v.getContext().startActivity(intent);
+            });
+
         }
     }
 }

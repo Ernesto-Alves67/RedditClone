@@ -1,4 +1,4 @@
-package fragments;
+package com.example.redditclone.fragments;
 
 import android.os.Bundle;
 
@@ -116,7 +116,7 @@ public class HomeFragment extends Fragment {
                     Toast.makeText(getContext(), "Recebido", Toast.LENGTH_SHORT).show();
                     //data_output.setText(result);
                     G_result = result;
-                    setContentView(G_result);
+                    setContentView();
                 } else {
                     // Exibir uma mensagem de erro se o resultado for nulo
                     Toast.makeText(getContext(), "Erro na requisição", Toast.LENGTH_SHORT).show();
@@ -124,7 +124,7 @@ public class HomeFragment extends Fragment {
             }
         }).execute();
     }
-    public void setContentView(String content){
+    public void setContentView(){
         // Configurar o RecyclerView
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

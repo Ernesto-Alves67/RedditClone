@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black">
+    <!-- Header -->
+    <LinearLayout
+        android:id="@+id/feed_header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/feed_image"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/close_fd_btn"
+            style="@style/feedHeaderStyle"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:src="@drawable/cross_svgicon" />
+
+        <ImageView
+            style="@style/feedHeaderStyle"
+            android:src="@drawable/more_vertical_svgicon"
+            android:layout_marginLeft="@dimen/_305sdp" />
+    </LinearLayout>
+    <!-- FeedImage -->
+    <ImageView
+        android:id="@+id/feed_image"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_400sdp"
+        android:layout_marginTop="@dimen/_85sdp"
+        android:src="@drawable/bamboo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/feed_header_layout" />
+    <!-- Titulo e descricao -->
+    <LinearLayout
+        android:id="@+id/feed_titledesc_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        app:layout_constraintBottom_toTopOf="@id/feed_buttons_layout"
+        app:layout_constraintTop_toBottomOf="@id/feed_image">
+        <!-- imagem -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/profile_img_card"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            app:cardCornerRadius="@dimen/_46sdp"
+            app:cardElevation="0dp">
+            <ImageView
+                style="@style/feedHeaderStyle"
+                android:contentDescription="@string/imagem_do_perfil"
+                android:src="@drawable/bamboo"/>
+        </androidx.cardview.widget.CardView>
+        <!--Nome usuario-->
+        <TextView
+            style="@style/feedNameStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:textAlignment="gravity"
+            android:text="u/void_above_us"/>
+    </LinearLayout>
+    <!-- Botoes interacao -->
+    <LinearLayout
+        android:id="@+id/feed_buttons_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/feed_titledesc_layout">
+
+        <ImageView
+            android:layout_marginStart="@dimen/_15sdp"
+            android:rotation="360"
+            android:scaleType="fitXY"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:src="@drawable/arrow_outline_svgicon"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_30sdp"
+            android:text="2333"
+            android:textAlignment="gravity"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_24ssp"/>
+        <View
+            android:layout_width="@dimen/_2sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:background="@color/white"/>
+        <ImageView
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:rotation="180"
+            android:src="@drawable/arrow_outline_svgicon"/>
+        <ImageView
+            android:id="@+id/share_button"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginStart="@dimen/_210sdp"
+            android:rotation="-190"
+            android:src="@drawable/share_sgvicon"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
