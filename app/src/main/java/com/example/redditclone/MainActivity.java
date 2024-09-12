@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ImageView chev_ic;
     boolean isPager2Scrolling = false;
     boolean isPager1Scrolling = false;
+    TitlePagerAdapter titleAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,8 +72,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         binding.viewPager.setUserInputEnabled(true);
         binding.fragmentContainer.setVisibility(View.GONE);
         binding.dinamicTittle.setVisibility(View.GONE);
-        TitlePagerAdapter titleAdapter = new TitlePagerAdapter();
+        titleAdapter = new TitlePagerAdapter();
         binding.titleViewPager.setAdapter(titleAdapter);
+        binding.titleViewPager.setClipToPadding(false);  // Permite exibir parte do próximo item
+        binding.titleViewPager.setPadding(50, 0, 50, 0);  // Ajuste conforme necessário
+        //binding.titleViewPager.setPageMargin(20);  // Espaçamento entre os títulos
+
 
 
     }
@@ -111,42 +117,58 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         binding.bottomNavigation.setOnItemSelectedListener(item -> {
             Fragment selectedFragment = null;
             int itemId = item.getItemId();
-            TextView dynamicTitle = findViewById(R.id.dinamicTittle);
 
             String toolbarTitle = "";
             if (itemId == R.id.home) {
                 selectedFragment = new HomeFragment();
-                toolbarTitle = "reddit";
+                toolbarTitle = "";
                 chev_ic.setVisibility(View.VISIBLE);
-
+                binding.dinamicTittle.setVisibility(View.GONE);
+                binding.fragmentContainer.setVisibility(View.GONE);
+                binding.viewPager.setVisibility(View.VISIBLE);
             }
-            binding.dinamicTittle.setVisibility(View.VISIBLE);
+            //binding.dinamicTittle.setVisibility(View.VISIBLE);
             if (itemId == R.id.notification) {
                 selectedFragment = new NotificationsFragment();
                 toolbarTitle = "Notifications";
                 chev_ic.setVisibility(View.GONE);
                 binding.fragmentContainer.setVisibility(View.VISIBLE);
+                binding.viewPager.setVisibility(View.GONE);
             }
             if (itemId == R.id.chat) {
                 selectedFragment = new ChatFragment();
                 toolbarTitle = "Chats";
                 chev_ic.setVisibility(View.GONE);
+                binding.fragmentContainer.setVisibility(View.VISIBLE);
+                binding.viewPager.setVisibility(View.GONE);
             }
             if (itemId == R.id.community) {
                 selectedFragment = new CommunityFragment();
                 toolbarTitle = "Communitys";
                 chev_ic.setVisibility(View.GONE);
+                binding.fragmentContainer.setVisibility(View.VISIBLE);
+                binding.viewPager.setVisibility(View.GONE);
             }
 
             if (selectedFragment != null) {
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, selectedFragment)
                         .commit();
-                dynamicTitle.setText(toolbarTitle);
-                adjustToolbarTitle();
+                if (!toolbarTitle.isEmpty()) {
+                    binding.dinamicTittle.setText(toolbarTitle);
+                    adjustToolbarTitle();
+                }else{binding.dinamicTittle.setVisibility(View.GONE);}
+
             }
             return true;
         });
+
+//        binding.titleViewPager.setPageTransformer((page, position) -> {
+//            float scaleFactor = 0.85f + (1 - Math.abs(position)) * 0.15f;
+//            page.setScaleX(scaleFactor);
+//            page.setScaleY(scaleFactor);
+//            page.setTranslationX(-30 * position);  // Diminua ou aumente o valor para ajustar o espaço
+//        });
 
         binding.viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
 //            @Override
@@ -161,31 +183,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 // Evita loop infinito
                 if (!isPager2Scrolling) {
                     isPager1Scrolling = true;
-                    binding.titleViewPager.scrollTo(position, positionOffsetPixels);  // Sincroniza o scroll
+                    binding.titleViewPager.scrollTo(positionOffsetPixels, 0);  // Sincroniza o scroll
+                    binding.titleViewPager.setCurrentItem(position, true);
+                    if(position == titleAdapter.getItemCount()){
+                        Log.d("Item Pager", "Item: " + position);
+                    }
                 }
                 isPager1Scrolling = false;
             }
         });
-        binding.titleViewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
-
-                // Evita loop infinito
-                if (!isPager1Scrolling) {
-                    isPager2Scrolling = true;
-                    binding.viewPager.scrollTo(position, positionOffsetPixels);  // Sincroniza o scroll
-                }
-                isPager2Scrolling = false;
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                super.onPageSelected(position);
-                // Sincroniza a página selecionada
-                binding.viewPager.setCurrentItem(position, false);
-            }
-        });
+//        binding.titleViewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+//            @Override
+//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
+//
+//                // Evita loop infinito
+//                if (!isPager1Scrolling) {
+//                    isPager2Scrolling = true;
+//                    binding.viewPager.scrollTo(position, positionOffsetPixels);  // Sincroniza o scroll
+//                }
+//                isPager2Scrolling = false;
+//            }
+//
+////            @Override
+////            public void onPageSelected(int position) {
+////                super.onPageSelected(position);
+////                // Sincroniza a página selecionada
+////                binding.viewPager.setCurrentItem(position, false);
+////            }
+//        });
     }
 
     @Override
