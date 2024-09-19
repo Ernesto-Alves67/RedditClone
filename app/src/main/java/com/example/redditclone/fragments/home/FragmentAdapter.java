@@ -5,9 +5,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.redditclone.PopularFragment;
-import com.example.redditclone.RecentFragment;
-import com.example.redditclone.VideosFragment;
 import com.example.redditclone.fragments.HomeFragment;
 
 public class FragmentAdapter extends FragmentStateAdapter {

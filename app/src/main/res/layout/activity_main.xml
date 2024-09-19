@@ -40,16 +40,17 @@
                 <!-- ViewPager2 para deslizar entre títulos -->
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/titleViewPager"
-                    android:layout_width="@dimen/_150sdp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"/>
+                <!-- ViewPager2 para deslizar entre títulos -->
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <LinearLayout
                         android:id="@+id/title_id"
-                        android:layout_width="@dimen/_100sdp"
+                        android:layout_width="@dimen/_180sdp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left|center"
                         android:layout_marginHorizontal="5dp"
@@ -157,29 +158,29 @@
         </RelativeLayout>
 
     </FrameLayout>
-
+    <!--  Menus Laterais  -->
+    <!--  Menu Esquerda  -->
     <com.google.android.material.navigation.NavigationView
+        android:id="@+id/left_menu"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/nav_view"
         android:layout_gravity="start"
         android:visibility="visible"
-        app:headerLayout="@layout/nav_header"
-        app:menu="@menu/nav_menu"
         app:itemIconTint="@color/lavender"
-        app:itemTextColor="@color/lavender"/>
-
+        app:itemTextColor="@color/lavender">
+        <include layout="@layout/menu_left" />
+    </com.google.android.material.navigation.NavigationView>
+    <!--  Menu Direita  -->
     <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_perfil"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/nav_perfil"
         android:layout_gravity="end"
         android:background="#483D8B"
-        app:headerLayout="@layout/nav_profile_header"
-        android:fitsSystemWindows="true"
-        app:menu="@menu/nav_profile_menu"
-        app:itemIconTint="@color/lavender"
-        app:itemTextColor="@color/lavender"/>
+        android:fitsSystemWindows="true">
+
+        <include layout="@layout/menu_perfil_right" />
+    </com.google.android.material.navigation.NavigationView>
 
 
 

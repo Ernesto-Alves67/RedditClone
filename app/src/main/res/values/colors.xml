@@ -10,4 +10,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="white2">#FDF5E6</color>
     <color name="lavender">#8692f7</color>
+    <color name="grayLight">#898E94</color>
+    <color name="asphalt">#1F222A</color>
+    <color name="nightGray">#282C34</color>
 </resources>

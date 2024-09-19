@@ -152,4 +152,19 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(adapter);
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (recyclerView != null) {
+            recyclerView.setAdapter(null);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(G_result != null) {
+            setContentView();
+        }
+    }
 }

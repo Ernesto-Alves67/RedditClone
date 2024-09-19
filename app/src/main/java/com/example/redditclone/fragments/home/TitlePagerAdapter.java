@@ -40,7 +40,7 @@ public class TitlePagerAdapter extends RecyclerView.Adapter<TitlePagerAdapter.Ti
                 ViewGroup.LayoutParams.MATCH_PARENT
         ));
         linearLayout.setOrientation(LinearLayout.HORIZONTAL);
-        linearLayout.setGravity(Gravity.CENTER);  // Centralizar o conteúdo
+        //linearLayout.setGravity(Gravity.CENTER);  // Centralizar o conteúdo
 
         linearLayout.addView(textView);
 

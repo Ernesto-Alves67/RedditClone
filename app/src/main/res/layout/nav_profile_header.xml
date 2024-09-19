@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="100dp">
+    android:paddingTop="@dimen/_21ssp">
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -16,12 +16,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:padding="@dimen/_3sdp">
 
             <ImageView
                 android:layout_width="170dp"
                 android:layout_height="170dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="@dimen/_51sdp"
                 android:background="@drawable/rounded_shape"
                 android:clipToOutline="true"
                 android:src="@drawable/schlambda_img" />
@@ -31,19 +33,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Clone Reddit"
+                android:text="u/ClonadorMobile"
+                android:textSize="@dimen/_21ssp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView3"
+                android:paddingHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:background="@drawable/border_gray"
                 android:fontFamily="@font/robotoslab_semibold"
-                android:text="scherzo@gmail.com"
+                android:text="Status de online: Desligado"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="@dimen/_16ssp" />
         </LinearLayout>
     </FrameLayout>
 

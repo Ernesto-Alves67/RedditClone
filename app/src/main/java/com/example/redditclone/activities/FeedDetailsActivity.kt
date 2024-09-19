@@ -17,7 +17,11 @@ class FeedDetailsActivity : AppCompatActivity() {
 
         // Definindo o conteúdo da view como o root da binding
         setContentView(binding.root)
+        setListeners()
 
+    }
+
+    private fun setListeners() {
         binding.closeFdBtn.setOnClickListener {
             finish()
         }

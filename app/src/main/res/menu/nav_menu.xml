@@ -1,43 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.redditclone.MainActivity"
-    tools:showIn = "navigation_view">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <group
-        android:checkableBehavior="single">
-
-        <item
-            android:id="@+id/nav_Profile"
-            android:icon="@drawable/nav_home"
-            android:title="Perfil"/>
-
-        <item
-            android:id="@+id/nav_settings"
-            android:icon="@drawable/nav_settings"
-            android:title="Settings"/>
-
-        <item
-            android:id="@+id/nav_share"
-            android:icon="@drawable/nav_share"
-            android:title="Share"/>
-
-        <item
-            android:id="@+id/nav_about"
-            android:icon="@drawable/nav_about"
-            android:title="About Us"/>
-    </group>
     <item
-        android:title="">
+        android:id="@+id/nav_favorites"
+        android:title="Item 1" />
 
-        <menu>
-            <item
-                android:id="@+id/nav_logout"
-                android:icon="@drawable/nav_logout"
-                android:title="Logout"/>
-        </menu>
+    <item
+        android:id="@+id/nav_your_communities"
+        android:title="Item 2" />
 
-    </item>
+    <item
+        android:id="@+id/nav_following"
+        android:title="Item 3" />
+
+    <item
+        android:id="@+id/nav_all"
+        android:title="Item 4" />
 
 </menu>
