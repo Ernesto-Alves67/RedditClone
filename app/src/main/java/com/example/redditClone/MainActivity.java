@@ -1,14 +1,11 @@
-package com.example.multinavs;
+package com.example.redditClone;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -23,13 +20,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.multinavs.databinding.ActivityMainBinding;
+import com.example.redditClone.databinding.ActivityMainBinding;
+import com.example.redditClone.fragments.AboutFragment;
+import com.example.redditClone.fragments.HomeFragment;
+import com.example.redditClone.fragments.SettingsFragment;
+import com.example.redditClone.fragments.ShareFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
-import fragments.*;
-import fragments.chat.ChatFragment;
-import fragments.community.CommunityFragment;
+import com.example.redditClone.fragments.chat.ChatFragment;
+import com.example.redditClone.fragments.community.CommunityFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 

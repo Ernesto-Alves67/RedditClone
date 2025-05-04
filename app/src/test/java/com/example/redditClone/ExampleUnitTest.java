@@ -1,4 +1,4 @@
-package com.example.multinavs;
+package com.example.redditClone;
 
 import org.junit.Test;
 

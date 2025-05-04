@@ -1,4 +1,4 @@
-package fragments;
+package com.example.redditClone.fragments;
 
 import android.os.Bundle;
 
@@ -11,10 +11,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.multinavs.R;
+import com.example.redditClone.R;
 
-import mongo_api.MongoAPIListener;
-import mongo_api.MongoAPITask;
+import com.example.redditClone.mongo_api.MongoAPIListener;
+import com.example.redditClone.mongo_api.MongoAPITask;
 
 /**
  * A simple {@link Fragment} subclass.

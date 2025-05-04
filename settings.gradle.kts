@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MultiNavs"
+rootProject.name = "RedditClone"
 include(":app")
  

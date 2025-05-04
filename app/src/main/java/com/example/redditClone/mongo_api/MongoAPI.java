@@ -1,4 +1,4 @@
-package mongo_api;
+package com.example.redditClone.mongo_api;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

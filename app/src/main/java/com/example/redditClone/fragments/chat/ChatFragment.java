@@ -1,30 +1,21 @@
-package fragments;
+package com.example.redditClone.fragments.chat;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.multinavs.R;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import adapters.MyAdapter;
-import adapters.MyItem;
-
+import com.example.redditClone.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link SettingsFragment#newInstance} factory method to
+ * Use the {@link ChatFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SettingsFragment extends Fragment {
+public class ChatFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,7 +26,7 @@ public class SettingsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public SettingsFragment() {
+    public ChatFragment() {
         // Required empty public constructor
     }
 
@@ -45,11 +36,11 @@ public class SettingsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment SettingsFragment.
+     * @return A new instance of fragment ChatFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static SettingsFragment newInstance(String param1, String param2) {
-        SettingsFragment fragment = new SettingsFragment();
+    public static ChatFragment newInstance(String param1, String param2) {
+        ChatFragment fragment = new ChatFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -70,23 +61,6 @@ public class SettingsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_settings, container, false);
-
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-
-        // Configurar o RecyclerView
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        // Criar e configurar o adapter
-        List<MyItem> itemList = new ArrayList<>();
-        itemList.add(new MyItem("Título 1", "Descrição 1"));
-        itemList.add(new MyItem("Título 2", "Descrição 2"));
-        // Adicione mais itens conforme necessário
-
-        MyAdapter adapter = new MyAdapter(itemList);
-        recyclerView.setAdapter(adapter);
-
-        return view;
+        return inflater.inflate(R.layout.fragment_chat, container, false);
     }
-
 }
