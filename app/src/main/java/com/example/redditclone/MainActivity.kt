@@ -4,9 +4,7 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.os.Bundle
 import android.util.Log
-import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -14,17 +12,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.viewpager2.widget.ViewPager2
 import com.example.redditclone.databinding.ActivityMainBinding
-import com.example.redditclone.fragments.AboutFragment
 import com.example.redditclone.fragments.chat.ChatFragment
 import com.example.redditclone.fragments.community.CommunityFragment
-import com.example.redditclone.fragments.HomeFragment
-import com.example.redditclone.fragments.ShareFragment
+import com.example.redditclone.fragments.home.HomeFragment
 import com.example.redditclone.fragments.home.FragmentAdapter
 import com.example.redditclone.fragments.home.TitlePagerAdapter
 import com.example.redditclone.fragments.notifications.NotificationsFrag
-import com.example.redditclone.fragments.profile.ProfileFragment
-import com.example.redditclone.fragments.settings.SettingsFragment
-import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity(){
 
@@ -46,7 +39,7 @@ class MainActivity : AppCompatActivity(){
 
         setVariables()
         setListeners()
-
+        setupDotsIndicator(4)
         // Defina o HomeFragment como o fragmento inicial
         if (savedInstanceState == null) {
             //homeFragment = HomeFragment()
@@ -63,14 +56,14 @@ class MainActivity : AppCompatActivity(){
         setSupportActionBar(binding.toolbar)
         drawerLayout = binding.drawerLayout
         val adapter = FragmentAdapter(this)
-        binding.viewPager.adapter = adapter
-        binding.viewPager.isUserInputEnabled = true
-        binding.fragmentContainer.visibility = View.GONE
-        binding.dinamicTittle.visibility = View.GONE
-        titleAdapter = TitlePagerAdapter()
-        binding.titleViewPager.adapter = titleAdapter
-        binding.titleViewPager.clipToPadding = false // Permite exibir parte do próximo item
-        binding.titleViewPager.setPadding(50, 0, 50, 0) // Ajuste conforme necessário
+//        binding.viewPager.adapter = adapter
+//        binding.viewPager.isUserInputEnabled = true
+//        binding.fragmentContainer.visibility = View.GONE
+//        binding.dinamicTittle.visibility = View.GONE
+//        titleAdapter = TitlePagerAdapter()
+//        binding.titleViewPager.adapter = titleAdapter
+//        binding.titleViewPager.clipToPadding = false // Permite exibir parte do próximo item
+//        binding.titleViewPager.setPadding(50, 0, 50, 0) // Ajuste conforme necessário
 
         homeFragment = HomeFragment()
         chatFragment = ChatFragment()
@@ -112,15 +105,15 @@ class MainActivity : AppCompatActivity(){
             val itemId = item.itemId
             if (itemId != activeFragment.id) {
                 val selectedFragment: Fragment?
-                var toolbarTitle = ""
+                var toolbarTitle = binding.dinamicTittle.text.toString()
                 val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
 
                 when (itemId) {
                     R.id.home -> {
                         selectedFragment = homeFragment
-                        toolbarTitle = ""
+                        toolbarTitle = "Reddit"
                         binding.icChevron.visibility = View.VISIBLE
-                        binding.titleViewPager.visibility = View.VISIBLE
+                        binding.titlesTabHome.visibility = View.VISIBLE
                         binding.dinamicTittle.visibility = View.GONE
                         binding.fragmentContainer.visibility = View.GONE
                         binding.viewPager.visibility = View.VISIBLE
@@ -130,7 +123,7 @@ class MainActivity : AppCompatActivity(){
                         toolbarTitle = "Notifications"
                         binding.icChevron.visibility = View.GONE
                         binding.dinamicTittle.visibility = View.VISIBLE
-                        binding.titleViewPager.visibility = View.GONE
+                        binding.titlesTabHome.visibility = View.GONE
                         binding.fragmentContainer.visibility = View.VISIBLE
                         binding.viewPager.visibility = View.GONE
                     }
@@ -139,7 +132,7 @@ class MainActivity : AppCompatActivity(){
                         toolbarTitle = "Chats"
                         binding.icChevron.visibility = View.GONE
                         binding.dinamicTittle.visibility = View.VISIBLE
-                        binding.titleViewPager.visibility = View.GONE
+                        binding.titlesTabHome.visibility = View.GONE
                         binding.fragmentContainer.visibility = View.VISIBLE
                         binding.viewPager.visibility = View.GONE
                     }
@@ -148,7 +141,7 @@ class MainActivity : AppCompatActivity(){
                         toolbarTitle = "Community"
                         binding.icChevron.visibility = View.GONE
                         binding.dinamicTittle.visibility = View.VISIBLE
-                        binding.titleViewPager.visibility = View.GONE
+                        binding.titlesTabHome.visibility = View.GONE
                         binding.fragmentContainer.visibility = View.VISIBLE
                         binding.viewPager.visibility = View.GONE
                     }
@@ -159,6 +152,7 @@ class MainActivity : AppCompatActivity(){
                     if (!it.isAdded) {
                         transaction.add(R.id.fragment_container, it)
                     }
+                    binding.dinamicTittle.text = toolbarTitle
                     supportFragmentManager.fragments.forEach { fragment ->
                         if (fragment != it) {
                             transaction.hide(fragment)
@@ -169,48 +163,25 @@ class MainActivity : AppCompatActivity(){
                     }
                     activeFragment = it
                     transaction.commit()
-                    binding.dinamicTittle.text = toolbarTitle
                 }
             }
             true
         }
 
-        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-                if (!isPager2Scrolling) {
-                    isPager1Scrolling = true
-                    binding.titleViewPager.scrollTo(positionOffsetPixels, 0)
-                    binding.titleViewPager.setCurrentItem(position, true)
-                }
-                isPager1Scrolling = false
-            }
-        })
+//        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+//            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+//                if (!isPager2Scrolling) {
+//                    isPager1Scrolling = true
+//                    binding.titleViewPager.scrollTo(positionOffsetPixels, 0)
+//                    binding.titleViewPager.setCurrentItem(position, true)
+//                }
+//                isPager1Scrolling = false
+//            }
+//        })
 
     }
 
-//    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-//        val itemId = item.itemId
-//        Log.d("MainActivity", "Selected item ID: $itemId")
-//
-//        when (itemId) {
-//            R.id.nav_Profile -> {
-//                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, ProfileFragment()).commit()
-//            }
-//            R.id.nav_settings -> {
-//                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, SettingsFragment()).commit()
-//            }
-//            R.id.nav_share -> {
-//                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, ShareFragment()).commit()
-//            }
-//            R.id.nav_about -> {
-//                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, AboutFragment()).commit()
-//            }
-//            else -> throw IllegalStateException("Unexpected value: $itemId")
-//        }
-//
-//        drawerLayout.closeDrawer(GravityCompat.START)
-//        return true
-//    }
+
 
     override fun onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -238,5 +209,14 @@ class MainActivity : AppCompatActivity(){
                     view.visibility = View.GONE
                 }
             })
+    }
+
+    private fun setupDotsIndicator(itemCount: Int) {
+        binding.titlesTabHome.removeAllTabs()
+        for (i in 0 until itemCount) {
+            val tab = binding.titlesTabHome.newTab()
+            tab.text = "Tab $i" // Define o texto para cada aba
+            binding.titlesTabHome.addTab(tab)
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.redditclone.fragments;
+package com.example.redditclone.fragments.home;
 
 import android.os.Bundle;
 
