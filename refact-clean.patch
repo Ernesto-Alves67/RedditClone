@@ -1,0 +1,657 @@
+diff --git a/.idea/AndroidProjectSystem.xml b/.idea/AndroidProjectSystem.xml
+new file mode 100644
+index 0000000..4a53bee
+--- /dev/null
++++ b/.idea/AndroidProjectSystem.xml
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="AndroidProjectSystem">
++    <option name="providerId" value="com.android.tools.idea.GradleProjectSystem" />
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/.idea/markdown.xml b/.idea/markdown.xml
+new file mode 100644
+index 0000000..c61ea33
+--- /dev/null
++++ b/.idea/markdown.xml
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="MarkdownSettings">
++    <option name="previewPanelProviderInfo">
++      <ProviderInfo name="Compose (experimental)" className="com.intellij.markdown.compose.preview.ComposePanelProvider" />
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+index 74dd639..b2c751a 100644
+--- a/.idea/misc.xml
++++ b/.idea/misc.xml
+@@ -1,4 +1,3 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ExternalStorageConfigurationManager" enabled="true" />
+   <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="jbr-21" project-jdk-type="JavaSDK">
+diff --git a/.idea/runConfigurations.xml b/.idea/runConfigurations.xml
+new file mode 100644
+index 0000000..16660f1
+--- /dev/null
++++ b/.idea/runConfigurations.xml
+@@ -0,0 +1,17 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RunConfigurationProducerService">
++    <option name="ignoredProducers">
++      <set>
++        <option value="com.intellij.execution.junit.AbstractAllInDirectoryConfigurationProducer" />
++        <option value="com.intellij.execution.junit.AllInPackageConfigurationProducer" />
++        <option value="com.intellij.execution.junit.PatternConfigurationProducer" />
++        <option value="com.intellij.execution.junit.TestInClassConfigurationProducer" />
++        <option value="com.intellij.execution.junit.UniqueIdConfigurationProducer" />
++        <option value="com.intellij.execution.junit.testDiscovery.JUnitTestDiscoveryConfigurationProducer" />
++        <option value="org.jetbrains.kotlin.idea.junit.KotlinJUnitRunConfigurationProducer" />
++        <option value="org.jetbrains.kotlin.idea.junit.KotlinPatternConfigurationProducer" />
++      </set>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000..e335767
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1 @@
++# RedditClone Android
+diff --git a/app/build.gradle.kts b/app/build.gradle.kts
+index 6929f2d..e6a392c 100644
+--- a/app/build.gradle.kts
++++ b/app/build.gradle.kts
+@@ -3,13 +3,13 @@ plugins {
+ }
+ 
+ android {
+-    namespace = "com.example.redditClone"
+-    compileSdk = 34
++    namespace = "com.ernesto67dev.redditClone"
++    compileSdk = 36
+ 
+     defaultConfig {
+         applicationId = "com.example.redditClone"
+         minSdk = 24
+-        targetSdk = 34
++        targetSdk = 36
+         versionCode = 1
+         versionName = "1.0"
+ 
+@@ -32,6 +32,7 @@ android {
+     buildFeatures {
+         viewBinding = true
+     }
++    buildToolsVersion = "36.1.0"
+ }
+ 
+ dependencies {
+diff --git a/app/src/androidTest/java/com/example/redditClone/ExampleInstrumentedTest.java b/app/src/androidTest/java/com/ernesto67dev/redditClone/ExampleInstrumentedTest.java
+similarity index 94%
+rename from app/src/androidTest/java/com/example/redditClone/ExampleInstrumentedTest.java
+rename to app/src/androidTest/java/com/ernesto67dev/redditClone/ExampleInstrumentedTest.java
+index 0c58fce..61c8e25 100644
+--- a/app/src/androidTest/java/com/example/redditClone/ExampleInstrumentedTest.java
++++ b/app/src/androidTest/java/com/ernesto67dev/redditClone/ExampleInstrumentedTest.java
+@@ -1,4 +1,4 @@
+-package com.example.redditClone;
++package com.ernesto67dev.redditClone;
+ 
+ import android.content.Context;
+ 
+diff --git a/app/src/main/java/adapters/MyAdapter.java b/app/src/main/java/adapters/MyAdapter.java
+index b161214..4e53aa6 100644
+--- a/app/src/main/java/adapters/MyAdapter.java
++++ b/app/src/main/java/adapters/MyAdapter.java
+@@ -7,7 +7,7 @@ import android.widget.TextView;
+ import androidx.annotation.NonNull;
+ import androidx.recyclerview.widget.RecyclerView;
+ 
+-import com.example.redditClone.R;
++import com.ernesto67dev.redditClone.R;
+ 
+ import java.util.List;
+ 
+diff --git a/app/src/main/java/com/example/redditClone/MainActivity.java b/app/src/main/java/com/ernesto67dev/redditClone/MainActivity.java
+similarity index 94%
+rename from app/src/main/java/com/example/redditClone/MainActivity.java
+rename to app/src/main/java/com/ernesto67dev/redditClone/MainActivity.java
+index d7bef4d..a8ac82c 100644
+--- a/app/src/main/java/com/example/redditClone/MainActivity.java
++++ b/app/src/main/java/com/ernesto67dev/redditClone/MainActivity.java
+@@ -1,4 +1,4 @@
+-package com.example.redditClone;
++package com.ernesto67dev.redditClone;
+ 
+ import androidx.annotation.NonNull;
+ import androidx.appcompat.app.AppCompatActivity;
+@@ -20,16 +20,16 @@ import android.widget.RelativeLayout;
+ import android.widget.TextView;
+ import android.widget.Toast;
+ 
+-import com.example.redditClone.databinding.ActivityMainBinding;
+-import com.example.redditClone.fragments.AboutFragment;
+-import com.example.redditClone.fragments.HomeFragment;
+-import com.example.redditClone.fragments.SettingsFragment;
+-import com.example.redditClone.fragments.ShareFragment;
++import com.ernesto67dev.redditClone.databinding.ActivityMainBinding;
++import com.ernesto67dev.redditClone.fragments.AboutFragment;
++import com.ernesto67dev.redditClone.fragments.HomeFragment;
++import com.ernesto67dev.redditClone.fragments.SettingsFragment;
++import com.ernesto67dev.redditClone.fragments.ShareFragment;
+ import com.google.android.material.bottomnavigation.BottomNavigationView;
+ import com.google.android.material.navigation.NavigationView;
+ 
+-import com.example.redditClone.fragments.chat.ChatFragment;
+-import com.example.redditClone.fragments.community.CommunityFragment;
++import com.ernesto67dev.redditClone.fragments.chat.ChatFragment;
++import com.ernesto67dev.redditClone.fragments.community.CommunityFragment;
+ 
+ public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+ 
+diff --git a/app/src/main/java/com/example/redditClone/fragments/AboutFragment.java b/app/src/main/java/com/ernesto67dev/redditClone/fragments/AboutFragment.java
+similarity index 95%
+rename from app/src/main/java/com/example/redditClone/fragments/AboutFragment.java
+rename to app/src/main/java/com/ernesto67dev/redditClone/fragments/AboutFragment.java
+index e935b03..564bc45 100644
+--- a/app/src/main/java/com/example/redditClone/fragments/AboutFragment.java
++++ b/app/src/main/java/com/ernesto67dev/redditClone/fragments/AboutFragment.java
+@@ -1,4 +1,4 @@
+-package com.example.redditClone.fragments;
++package com.ernesto67dev.redditClone.fragments;
+ 
+ import android.os.Bundle;
+ 
+@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
+ import android.view.View;
+ import android.view.ViewGroup;
+ 
+-import com.example.redditClone.R;
++import com.ernesto67dev.redditClone.R;
+ 
+ /**
+  * A simple {@link Fragment} subclass.
+diff --git a/app/src/main/java/com/example/redditClone/fragments/HomeFragment.java b/app/src/main/java/com/ernesto67dev/redditClone/fragments/HomeFragment.java
+similarity index 94%
+rename from app/src/main/java/com/example/redditClone/fragments/HomeFragment.java
+rename to app/src/main/java/com/ernesto67dev/redditClone/fragments/HomeFragment.java
+index dfab9e6..3204e24 100644
+--- a/app/src/main/java/com/example/redditClone/fragments/HomeFragment.java
++++ b/app/src/main/java/com/ernesto67dev/redditClone/fragments/HomeFragment.java
+@@ -1,4 +1,4 @@
+-package com.example.redditClone.fragments;
++package com.ernesto67dev.redditClone.fragments;
+ 
+ import android.os.Bundle;
+ 
+@@ -11,10 +11,10 @@ import android.widget.Button;
+ import android.widget.TextView;
+ import android.widget.Toast;
+ 
+-import com.example.redditClone.R;
++import com.ernesto67dev.redditClone.R;
+ 
+-import com.example.redditClone.mongo_api.MongoAPIListener;
+-import com.example.redditClone.mongo_api.MongoAPITask;
++import com.ernesto67dev.redditClone.mongo_api.MongoAPIListener;
++import com.ernesto67dev.redditClone.mongo_api.MongoAPITask;
+ 
+ /**
+  * A simple {@link Fragment} subclass.
+diff --git a/app/src/main/java/com/example/redditClone/fragments/SettingsFragment.java b/app/src/main/java/com/ernesto67dev/redditClone/fragments/SettingsFragment.java
+similarity index 96%
+rename from app/src/main/java/com/example/redditClone/fragments/SettingsFragment.java
+rename to app/src/main/java/com/ernesto67dev/redditClone/fragments/SettingsFragment.java
+index 73f05c9..b277ae4 100644
+--- a/app/src/main/java/com/example/redditClone/fragments/SettingsFragment.java
++++ b/app/src/main/java/com/ernesto67dev/redditClone/fragments/SettingsFragment.java
+@@ -1,4 +1,4 @@
+-package com.example.redditClone.fragments;
++package com.ernesto67dev.redditClone.fragments;
+ 
+ import android.os.Bundle;
+ 
+@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
+ import android.view.View;
+ import android.view.ViewGroup;
+ 
+-import com.example.redditClone.R;
++import com.ernesto67dev.redditClone.R;
+ 
+ import java.util.ArrayList;
+ import java.util.List;
+diff --git a/app/src/main/java/com/example/redditClone/fragments/ShareFragment.java b/app/src/main/java/com/ernesto67dev/redditClone/fragments/ShareFragment.java
+similarity index 95%
+rename from app/src/main/java/com/example/redditClone/fragments/ShareFragment.java
+rename to app/src/main/java/com/ernesto67dev/redditClone/fragments/ShareFragment.java
+index 37cf833..8c99be2 100644
+--- a/app/src/main/java/com/example/redditClone/fragments/ShareFragment.java
++++ b/app/src/main/java/com/ernesto67dev/redditClone/fragments/ShareFragment.java
+@@ -1,4 +1,4 @@
+-package com.example.redditClone.fragments;
++package com.ernesto67dev.redditClone.fragments;
+ 
+ import android.os.Bundle;
+ 
+@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
+ import android.view.View;
+ import android.view.ViewGroup;
+ 
+-import com.example.redditClone.R;
++import com.ernesto67dev.redditClone.R;
+ 
+ /**
+  * A simple {@link Fragment} subclass.
+diff --git a/app/src/main/java/com/example/redditClone/fragments/chat/ChatFragment.java b/app/src/main/java/com/ernesto67dev/redditClone/fragments/chat/ChatFragment.java
+similarity index 95%
+rename from app/src/main/java/com/example/redditClone/fragments/chat/ChatFragment.java
+rename to app/src/main/java/com/ernesto67dev/redditClone/fragments/chat/ChatFragment.java
+index 2b0fcd4..c7e26c4 100644
+--- a/app/src/main/java/com/example/redditClone/fragments/chat/ChatFragment.java
++++ b/app/src/main/java/com/ernesto67dev/redditClone/fragments/chat/ChatFragment.java
+@@ -1,4 +1,4 @@
+-package com.example.redditClone.fragments.chat;
++package com.ernesto67dev.redditClone.fragments.chat;
+ 
+ import android.os.Bundle;
+ 
+@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
+ import android.view.View;
+ import android.view.ViewGroup;
+ 
+-import com.example.redditClone.R;
++import com.ernesto67dev.redditClone.R;
+ 
+ /**
+  * A simple {@link Fragment} subclass.
+diff --git a/app/src/main/java/com/ernesto67dev/redditClone/fragments/community/CommunityFragment.java b/app/src/main/java/com/ernesto67dev/redditClone/fragments/community/CommunityFragment.java
+new file mode 100644
+index 0000000..82059d9
+--- /dev/null
++++ b/app/src/main/java/com/ernesto67dev/redditClone/fragments/community/CommunityFragment.java
+@@ -0,0 +1,31 @@
++package com.ernesto67dev.redditClone.fragments.community;
++
++import android.os.Bundle;
++
++import androidx.fragment.app.Fragment;
++
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++
++import com.ernesto67dev.redditClone.R;
++
++public class CommunityFragment extends Fragment {
++
++    public CommunityFragment() {
++        // Required empty public constructor
++    }
++
++    @Override
++    public void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++
++    }
++
++    @Override
++    public View onCreateView(LayoutInflater inflater, ViewGroup container,
++                             Bundle savedInstanceState) {
++        // Inflate the layout for this fragment
++        return inflater.inflate(R.layout.fragment_community, container, false);
++    }
++}
+\ No newline at end of file
+diff --git a/app/src/main/java/com/example/redditClone/mongo_api/MongoAPI.java b/app/src/main/java/com/ernesto67dev/redditClone/mongo_api/MongoAPI.java
+similarity index 97%
+rename from app/src/main/java/com/example/redditClone/mongo_api/MongoAPI.java
+rename to app/src/main/java/com/ernesto67dev/redditClone/mongo_api/MongoAPI.java
+index 6989d1a..16cfcbf 100644
+--- a/app/src/main/java/com/example/redditClone/mongo_api/MongoAPI.java
++++ b/app/src/main/java/com/ernesto67dev/redditClone/mongo_api/MongoAPI.java
+@@ -1,4 +1,4 @@
+-package com.example.redditClone.mongo_api;
++package com.ernesto67dev.redditClone.mongo_api;
+ 
+ import java.io.BufferedReader;
+ import java.io.InputStreamReader;
+diff --git a/app/src/main/java/com/example/redditClone/mongo_api/MongoAPIListener.java b/app/src/main/java/com/ernesto67dev/redditClone/mongo_api/MongoAPIListener.java
+similarity index 60%
+rename from app/src/main/java/com/example/redditClone/mongo_api/MongoAPIListener.java
+rename to app/src/main/java/com/ernesto67dev/redditClone/mongo_api/MongoAPIListener.java
+index 5123b88..50977b9 100644
+--- a/app/src/main/java/com/example/redditClone/mongo_api/MongoAPIListener.java
++++ b/app/src/main/java/com/ernesto67dev/redditClone/mongo_api/MongoAPIListener.java
+@@ -1,4 +1,4 @@
+-package com.example.redditClone.mongo_api;
++package com.ernesto67dev.redditClone.mongo_api;
+ 
+ public interface MongoAPIListener {
+     void onResult(String result);
+diff --git a/app/src/main/java/com/example/redditClone/mongo_api/MongoAPITask.java b/app/src/main/java/com/ernesto67dev/redditClone/mongo_api/MongoAPITask.java
+similarity index 94%
+rename from app/src/main/java/com/example/redditClone/mongo_api/MongoAPITask.java
+rename to app/src/main/java/com/ernesto67dev/redditClone/mongo_api/MongoAPITask.java
+index 732425b..25b8dac 100644
+--- a/app/src/main/java/com/example/redditClone/mongo_api/MongoAPITask.java
++++ b/app/src/main/java/com/ernesto67dev/redditClone/mongo_api/MongoAPITask.java
+@@ -1,4 +1,4 @@
+-package com.example.redditClone.mongo_api;
++package com.ernesto67dev.redditClone.mongo_api;
+ 
+ import android.os.AsyncTask;
+ 
+diff --git a/app/src/main/java/com/example/redditClone/fragments/community/CommunityFragment.java b/app/src/main/java/com/example/redditClone/fragments/community/CommunityFragment.java
+deleted file mode 100644
+index a97440b..0000000
+--- a/app/src/main/java/com/example/redditClone/fragments/community/CommunityFragment.java
++++ /dev/null
+@@ -1,66 +0,0 @@
+-package com.example.redditClone.fragments.community;
+-
+-import android.os.Bundle;
+-
+-import androidx.fragment.app.Fragment;
+-
+-import android.view.LayoutInflater;
+-import android.view.View;
+-import android.view.ViewGroup;
+-
+-import com.example.redditClone.R;
+-
+-/**
+- * A simple {@link Fragment} subclass.
+- * Use the {@link CommunityFragment#newInstance} factory method to
+- * create an instance of this fragment.
+- */
+-public class CommunityFragment extends Fragment {
+-
+-    // TODO: Rename parameter arguments, choose names that match
+-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+-    private static final String ARG_PARAM1 = "param1";
+-    private static final String ARG_PARAM2 = "param2";
+-
+-    // TODO: Rename and change types of parameters
+-    private String mParam1;
+-    private String mParam2;
+-
+-    public CommunityFragment() {
+-        // Required empty public constructor
+-    }
+-
+-    /**
+-     * Use this factory method to create a new instance of
+-     * this fragment using the provided parameters.
+-     *
+-     * @param param1 Parameter 1.
+-     * @param param2 Parameter 2.
+-     * @return A new instance of fragment CommunityFragment.
+-     */
+-    // TODO: Rename and change types and number of parameters
+-    public static CommunityFragment newInstance(String param1, String param2) {
+-        CommunityFragment fragment = new CommunityFragment();
+-        Bundle args = new Bundle();
+-        args.putString(ARG_PARAM1, param1);
+-        args.putString(ARG_PARAM2, param2);
+-        fragment.setArguments(args);
+-        return fragment;
+-    }
+-
+-    @Override
+-    public void onCreate(Bundle savedInstanceState) {
+-        super.onCreate(savedInstanceState);
+-        if (getArguments() != null) {
+-            mParam1 = getArguments().getString(ARG_PARAM1);
+-            mParam2 = getArguments().getString(ARG_PARAM2);
+-        }
+-    }
+-
+-    @Override
+-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+-                             Bundle savedInstanceState) {
+-        // Inflate the layout for this fragment
+-        return inflater.inflate(R.layout.fragment_community, container, false);
+-    }
+-}
+\ No newline at end of file
+diff --git a/app/src/main/res/layout/fragment_first.xml b/app/src/main/res/layout/fragment_first.xml
+deleted file mode 100644
+index 44baecd..0000000
+--- a/app/src/main/res/layout/fragment_first.xml
++++ /dev/null
+@@ -1,35 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    tools:context=".FirstFragment">
+-
+-    <androidx.constraintlayout.widget.ConstraintLayout
+-        android:layout_width="match_parent"
+-        android:layout_height="match_parent"
+-        android:padding="16dp">
+-
+-        <Button
+-            android:id="@+id/button_first"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:text="@string/next"
+-            app:layout_constraintBottom_toTopOf="@id/textview_first"
+-            app:layout_constraintEnd_toEndOf="parent"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintTop_toTopOf="parent" />
+-
+-        <TextView
+-            android:id="@+id/textview_first"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="16dp"
+-            android:text="@string/lorem_ipsum"
+-            app:layout_constraintBottom_toBottomOf="parent"
+-            app:layout_constraintEnd_toEndOf="parent"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintTop_toBottomOf="@id/button_first" />
+-    </androidx.constraintlayout.widget.ConstraintLayout>
+-</androidx.core.widget.NestedScrollView>
+\ No newline at end of file
+diff --git a/app/src/main/res/menu/bottom_menu.xml b/app/src/main/res/menu/bottom_menu.xml
+index e7760d2..ed88a35 100644
+--- a/app/src/main/res/menu/bottom_menu.xml
++++ b/app/src/main/res/menu/bottom_menu.xml
+@@ -4,28 +4,28 @@
+     <item
+         android:id="@+id/home"
+         android:icon="@drawable/home_ic"
+-        android:title="Home"
++        android:title="@string/bm_home"
+         app:showAsAction="ifRoom"/>
+     <item
+         android:id="@+id/community"
+         android:icon="@drawable/group_svgrepo_com"
+-        android:title="Comunidades"
++        android:title="@string/bm_comunidades"
+         app:showAsAction="ifRoom"/>
+     <item
+         android:id="@+id/criar"
+         android:icon="@drawable/plus_svgrepo_com"
+-        android:title="Criar"
++        android:title="@string/bm_criar"
+         app:showAsAction="ifRoom"/>
+ 
+     <item
+         android:id="@+id/chat"
+         android:icon="@drawable/chat_round_dots_svgrepo_com"
+-        android:title="Chat"
++        android:title="@string/bm_chat"
+         app:showAsAction="ifRoom"/>
+ 
+     <item
+         android:id="@+id/notification"
+         android:icon="@drawable/bell_svgrepo_com"
+-        android:title="Notificações"
++        android:title="@string/bm_notifica_es"
+         app:showAsAction="ifRoom"/>
+ </menu>
+\ No newline at end of file
+diff --git a/app/src/main/res/menu/nav_menu.xml b/app/src/main/res/menu/nav_menu.xml
+index a861c15..90adb3d 100644
+--- a/app/src/main/res/menu/nav_menu.xml
++++ b/app/src/main/res/menu/nav_menu.xml
+@@ -2,7 +2,7 @@
+ <menu
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools"
+-    tools:context="com.example.redditClone.MainActivity"
++    tools:context="com.ernesto67dev.redditClone.MainActivity"
+     tools:showIn = "navigation_view">
+ 
+     <group
+diff --git a/app/src/main/res/menu/nav_profile_menu.xml b/app/src/main/res/menu/nav_profile_menu.xml
+index 08c9561..c8924b5 100644
+--- a/app/src/main/res/menu/nav_profile_menu.xml
++++ b/app/src/main/res/menu/nav_profile_menu.xml
+@@ -2,27 +2,27 @@
+ <menu xmlns:android="http://schemas.android.com/apk/res/android">
+     <item
+         android:id="@+id/nav_item_one"
+-        android:title="Perfil"/>
++        android:title="@string/perfil"/>
+     <item
+         android:id="@+id/nav_item_2"
+-        android:title="Criar Comunidade"/>
++        android:title="@string/criar_comunidade"/>
+     <item
+         android:id="@+id/nav_item_colab"
+-        android:title="Programa de Colaboradores"/>
++        android:title="@string/programa_de_colaboradores"/>
+     <item
+         android:id="@+id/nav_item_3"
+-        android:title="Cofre"/>
++        android:title="@string/cofre"/>
+     <item
+         android:id="@+id/nav_item_4"
+-        android:title="Reddit Premium"/>
++        android:title="@string/reddit_premium"/>
+     <item
+         android:id="@+id/nav_item_5"
+-        android:title="Salvo"/>
++        android:title="@string/salvo"/>
+     <item
+         android:id="@+id/nav_item_6"
+-        android:title="Histórico"/>
++        android:title="@string/hist_rico"/>
+ 
+     <item
+         android:id="@+id/nav_item_two"
+-        android:title="Configurações"/>
++        android:title="@string/configura_es"/>
+ </menu>
+diff --git a/app/src/main/res/navigation/nav_graph.xml b/app/src/main/res/navigation/nav_graph.xml
+index d160545..a860541 100644
+--- a/app/src/main/res/navigation/nav_graph.xml
++++ b/app/src/main/res/navigation/nav_graph.xml
+@@ -5,24 +5,24 @@
+     android:id="@+id/nav_graph"
+     app:startDestination="@id/FirstFragment">
+ 
+-    <fragment
+-        android:id="@+id/FirstFragment"
+-        android:name="com.example.redditClone.FirstFragment"
+-        android:label="@string/first_fragment_label"
+-        tools:layout="@layout/fragment_first">
++<!--    <fragment-->
++<!--        android:id="@+id/FirstFragment"-->
++<!--        android:name="com.example.redditClone.FirstFragment"-->
++<!--        android:label="@string/first_fragment_label"-->
++<!--        tools:layout="@layout/fragment_first">-->
+ 
+-        <action
+-            android:id="@+id/action_FirstFragment_to_SecondFragment"
+-            app:destination="@id/SecondFragment" />
+-    </fragment>
+-    <fragment
+-        android:id="@+id/SecondFragment"
+-        android:name="com.example.redditClone.SecondFragment"
+-        android:label="@string/second_fragment_label"
+-        tools:layout="@layout/fragment_second">
++<!--        <action-->
++<!--            android:id="@+id/action_FirstFragment_to_SecondFragment"-->
++<!--            app:destination="@id/SecondFragment" />-->
++<!--    </fragment>-->
++<!--    <fragment-->
++<!--        android:id="@+id/SecondFragment"-->
++<!--        android:name="com.example.redditClone.SecondFragment"-->
++<!--        android:label="@string/second_fragment_label"-->
++<!--        tools:layout="@layout/fragment_second">-->
+ 
+-        <action
+-            android:id="@+id/action_SecondFragment_to_FirstFragment"
+-            app:destination="@id/FirstFragment" />
+-    </fragment>
++<!--        <action-->
++<!--            android:id="@+id/action_SecondFragment_to_FirstFragment"-->
++<!--            app:destination="@id/FirstFragment" />-->
++<!--    </fragment>-->
+ </navigation>
+\ No newline at end of file
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+index e6ef74f..5b6f45b 100644
+--- a/app/src/main/res/values/strings.xml
++++ b/app/src/main/res/values/strings.xml
+@@ -2,8 +2,6 @@
+ 
+     <string name="action_settings">Settings</string>
+     <!-- Strings used for fragments for navigation -->
+-    <string name="first_fragment_label">First Fragment</string>
+-    <string name="second_fragment_label">Second Fragment</string>
+     <string name="next">Next</string>
+     <string name="previous">Previous</string>
+ 
+@@ -47,4 +45,22 @@
+     <string name="open_nav">Open Navigation Drawer</string>
+     <string name="close_nav">Close Navigation Drawer</string>
+     <string name="hello_blank_fragment">Helo</string>
++
++
++    <!-- side menu texts    -->
++    <string name="hist_rico">Histórico</string>
++    <string name="configura_es">Configurações</string>
++    <string name="programa_de_colaboradores">Programa de Colaboradores</string>
++    <string name="reddit_premium">Reddit Premium</string>
++    <string name="salvo">Salvo</string>
++    <string name="criar_comunidade">Criar Comunidade</string>
++    <string name="perfil">Perfil</string>
++    <string name="cofre">Cofre</string>
++    <string name="bm_chat">Chat</string>
++    <string name="bm_notifica_es">Notificações</string>
++    <string name="bm_criar">Criar</string>
++    <string name="bm_comunidades">Comunidades</string>
++    <string name="bm_home">Home</string>
++
++    <!-- Bottom nav texts    -->
+ </resources>
+\ No newline at end of file
+diff --git a/app/src/test/java/com/example/redditClone/ExampleUnitTest.java b/app/src/test/java/com/ernesto67dev/redditClone/ExampleUnitTest.java
+similarity index 89%
+rename from app/src/test/java/com/example/redditClone/ExampleUnitTest.java
+rename to app/src/test/java/com/ernesto67dev/redditClone/ExampleUnitTest.java
+index c3499e2..3bc18cc 100644
+--- a/app/src/test/java/com/example/redditClone/ExampleUnitTest.java
++++ b/app/src/test/java/com/ernesto67dev/redditClone/ExampleUnitTest.java
+@@ -1,4 +1,4 @@
+-package com.example.redditClone;
++package com.ernesto67dev.redditClone;
+ 
+ import org.junit.Test;
+ 
